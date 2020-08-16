@@ -4,9 +4,12 @@ import (
 	"fmt"
 	"github.com/edmondchuc/gordf/parser"
 	"github.com/edmondchuc/gordf/rdf"
+	"time"
 )
 
 func main() {
+	starttime := time.Now()
+
 	// Create new graph.
 	g := rdf.Graph{}
 
@@ -25,4 +28,6 @@ func main() {
 
 	// Add new triples.
 	g.Add(rdf.NewURI("https://edmondchuc.com/me"), schemaName, rdf.NewLiteral("Edmond Chuc"))
+
+	fmt.Println("Execution time: ", time.Now().Sub(starttime))
 }
