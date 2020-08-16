@@ -1,4 +1,4 @@
-module gordf
+module github.com/edmondchuc/gordf
 
 go 1.15
 

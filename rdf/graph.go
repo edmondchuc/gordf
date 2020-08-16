@@ -1,7 +1,7 @@
 package rdf
 
 import (
-	"gordf/set"
+	"github.com/edmondchuc/gordf/set"
 )
 
 // A Graph struct with three indexes of the different possible triple permutations for fast query access.

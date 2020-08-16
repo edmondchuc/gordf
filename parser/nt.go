@@ -2,8 +2,8 @@ package parser
 
 import (
 	"fmt"
+	"github.com/edmondchuc/gordf/rdf"
 	"github.com/iand/ntriples"
-	"gordf/rdf"
 	"os"
 )
 

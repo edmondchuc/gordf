@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"gordf/parser"
-	"gordf/rdf"
+	"github.com/edmondchuc/gordf/parser"
+	"github.com/edmondchuc/gordf/rdf"
 )
 
 func main() {

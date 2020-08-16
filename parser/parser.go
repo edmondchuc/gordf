@@ -2,7 +2,7 @@ package parser
 
 import (
 	"fmt"
-	"gordf/rdf"
+	"github.com/edmondchuc/gordf/rdf"
 )
 
 func ParseFile(graph *rdf.Graph, file, format string) {
