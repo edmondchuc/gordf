@@ -1,4 +1,4 @@
-package gordf
+package rdf
 
 // An RDF resource interface.
 type Node interface {

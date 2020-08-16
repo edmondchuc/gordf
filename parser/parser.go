@@ -2,10 +2,10 @@ package parser
 
 import (
 	"fmt"
-	"gordf/gordf"
+	"gordf/rdf"
 )
 
-func ParseFile(graph *gordf.Graph, file, format string) {
+func ParseFile(graph *rdf.Graph, file, format string) {
 	switch format {
 	case "nt":
 		ParseNT(graph, file)

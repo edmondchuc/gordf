@@ -1,4 +1,4 @@
-package gordf
+package rdf
 
 import (
 	"gordf/set"

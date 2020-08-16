@@ -3,27 +3,27 @@ package parser
 import (
 	"fmt"
 	"github.com/iand/ntriples"
-	"gordf/gordf"
+	"gordf/rdf"
 	"os"
 )
 
-func getGoRDFNode(node ntriples.RdfTerm) gordf.Node {
+func getGoRDFNode(node ntriples.RdfTerm) rdf.Node {
 	if node.IsIRI() {
-		return gordf.NewURI(node.Value)
+		return rdf.NewURI(node.Value)
 	} else if node.IsBlank() {
 		panic("Blank nodes for memory graph not supported yet.")
 	} else if node.IsLiteral() {
-		return gordf.NewLiteral(node.Value)
+		return rdf.NewLiteral(node.Value)
 	} else if node.IsLanguageLiteral() {
-		return gordf.NewLiteralWithLanguage(node.Value, node.Language)
+		return rdf.NewLiteralWithLanguage(node.Value, node.Language)
 	} else if node.IsTypedLiteral() {
-		return gordf.NewLiteralWithDatatype(node.Value, gordf.NewURI(node.DataType))
+		return rdf.NewLiteralWithDatatype(node.Value, rdf.NewURI(node.DataType))
 	} else {
 		panic("Error.")
 	}
 }
 
-func ParseNT(graph *gordf.Graph, file string) {
+func ParseNT(graph *rdf.Graph, file string) {
 	ntfile, err := os.Open(file)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error: %s", err.Error())
