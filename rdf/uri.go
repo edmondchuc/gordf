@@ -1,6 +1,9 @@
 package rdf
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/edmondchuc/gordf/util"
+)
 
 // The URI struct implements the Node interface.
 type URI struct {
@@ -24,7 +27,19 @@ func (uri URI) Value() string {
 	return uri.value
 }
 
+func (uri URI) IsURI() bool {
+	return true
+}
+
 // NewURI returns a new URI.
 func NewURI(uri string) URI {
 	return URI{value: uri}
+}
+
+func IsValidURIOrPanic(n Node) {
+	if n.IsURI() {
+		if !util.IsValidURI(n.Value()) {
+			panic(fmt.Sprintf(`Invalid URI: %v`, n.Value()))
+		}
+	}
 }

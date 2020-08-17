@@ -5,6 +5,7 @@ type Node interface {
 	String() string
 	Equals(n Node) bool
 	Value() string
+	IsURI() bool
 }
 
 type None struct {}
@@ -19,4 +20,8 @@ func (none None) Equals(n Node) bool {
 
 func (none None) Value() string {
 	return ""
+}
+
+func (none None) IsURI() bool {
+	return false
 }

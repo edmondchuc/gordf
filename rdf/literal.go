@@ -21,6 +21,10 @@ func (literal Literal) Value() string {
 	return fmt.Sprintf("%v", literal.value)
 }
 
+func (literal Literal) IsURI() bool {
+	return false
+}
+
 func (literal Literal) String() string {
 
 	// Literal is a number.

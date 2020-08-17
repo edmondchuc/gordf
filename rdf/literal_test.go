@@ -121,3 +121,12 @@ func TestLiteral_Equals2(t *testing.T) {
 		t.Errorf(`Expected values to not equal.`)
 	}
 }
+
+func TestLiteral_IsURI(t *testing.T) {
+	literal := NewLiteral(12)
+	got := literal.IsURI()
+	want := false
+	if got != want {
+		t.Errorf(`got %v; want %v`, got, want)
+	}
+}

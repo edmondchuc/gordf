@@ -1,5 +1,12 @@
 package rdf
 
+/*
+2020/08/17: Currently we test for valid URIs on arguments that are Node types. The Go way is to return an error
+or nil if no error when creating New URIs. However, to be able to create New URIs inline in a Graph.Triples(),
+we can't return both the object and the error variable. I am not sure how to get around this since I just started
+writing Go code last weekend.
+*/
+
 import (
 	"github.com/edmondchuc/gordf/set"
 )
@@ -12,6 +19,10 @@ type Graph struct {
 }
 
 func (g *Graph) Add(s, p, o Node) {
+	IsValidURIOrPanic(s)
+	IsValidURIOrPanic(p)
+	IsValidURIOrPanic(o)
+
 	addToIndex(&g.spo, s, p, o)
 	addToIndex(&g.pos, p, o, s)
 	addToIndex(&g.osp, o, s, p)
@@ -43,6 +54,10 @@ func addToIndex(index *map[Node]map[Node]set.Set, a, b, c Node) {
 }
 
 func (g *Graph) Triples(s, p, o Node) chan Triple {
+	IsValidURIOrPanic(s)
+	IsValidURIOrPanic(p)
+	IsValidURIOrPanic(o)
+
 	triples := make(chan Triple)
 
 	go func() {
