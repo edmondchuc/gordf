@@ -10,6 +10,7 @@ type Literal struct {
 }
 
 func (literal Literal) Equals(n Node) bool {
+	// TODO: use Node.Value() function instead of Literal.value.
 	literal2, ok := n.(Literal)
 	if ok {
 		return literal.value == literal2.value
@@ -18,6 +19,7 @@ func (literal Literal) Equals(n Node) bool {
 }
 
 func (literal Literal) Value() string {
+	// TODO: this should not be returning string.
 	return fmt.Sprintf("%v", literal.value)
 }
 
@@ -60,10 +62,12 @@ func (literal Literal) String() string {
 }
 
 func NewLiteralWithLanguageAndDatatype(value string, datatype URI, language string) Literal {
+	IsValidURIOrPanic(datatype)
 	return Literal{value: value, datatype: datatype, language: language}
 }
 
 func NewLiteralWithDatatype(value string, datatype URI) Literal {
+	IsValidURIOrPanic(datatype)
 	return Literal{value: value, datatype: datatype}
 }
 
